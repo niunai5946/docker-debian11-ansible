@@ -12,6 +12,8 @@ RUN echo 'root:frepai' | chpasswd
 
 # 暴露 22 端口
 EXPOSE 22
+EXPOSE 443
+EXPOSE 80
 
 # 启动 Shellinabox
 CMD ["/usr/bin/shellinaboxd", "-t", "-s", "/:LOGIN"]
