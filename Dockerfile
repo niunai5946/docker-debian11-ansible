@@ -32,5 +32,11 @@ RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 # Make sure systemd doesn't start agettys on tty[1-6].
 RUN rm -f /lib/systemd/system/multi-user.target.wants/getty.target
 
+# 设置 root 用户的密码为 'root'
+RUN echo 'root:frepai' | chpasswd
+
+# 暴露 22 端口
+EXPOSE 22
+
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/lib/systemd/systemd"]
